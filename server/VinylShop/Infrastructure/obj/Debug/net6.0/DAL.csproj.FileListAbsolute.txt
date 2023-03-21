@@ -1,0 +1,38 @@
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\DAL.deps.json
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\DAL.dll
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\DAL.pdb
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.dll
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\refint\DAL.dll
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.pdb
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\ref\DAL.dll
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\DAL.runtimeconfig.json
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\Common.dll
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\Common.pdb
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\obj\Debug\net6.0\DAL.csproj.CopyComplete
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\Domain.dll
+C:\Users\79806\Desktop\8 семестр\ИТ\VinylShop\back\VinylShop\DAL\bin\Debug\net6.0\Domain.pdb
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\DAL.deps.json
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\DAL.runtimeconfig.json
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\DAL.dll
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\DAL.pdb
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\Common.dll
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\Domain.dll
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\Common.pdb
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\bin\Debug\net6.0\Domain.pdb
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.csproj.CopyComplete
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.dll
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\refint\DAL.dll
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.pdb
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\DAL\obj\Debug\net6.0\ref\DAL.dll

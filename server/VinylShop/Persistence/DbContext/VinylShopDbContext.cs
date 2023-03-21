@@ -1,0 +1,41 @@
+﻿using Application.Common.DbContext;
+using Domain.Entities;
+using Persistence.Options;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Npgsql;
+using Persistence.Configurations;
+
+namespace Persistence.DbContext
+{
+    public class VinylShopDbContext : Microsoft.EntityFrameworkCore.DbContext, IVinylShopDbContext
+    {
+        private readonly PostgresOptions _postgresOptions;
+
+        public VinylShopDbContext(IOptions<PostgresOptions> postgresOptions, DbContextOptions options)
+            : base(options)
+        {
+            _postgresOptions = postgresOptions.Value;
+        }
+
+        public DbSet<Genre> Genres { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var connectionString = new NpgsqlConnectionStringBuilder
+            {
+                Host = _postgresOptions.PostgresHost,
+                Port = _postgresOptions.PostgresPort,
+                Username = _postgresOptions.PostgresUser,
+                Password = _postgresOptions.PostgresPassword,
+                Database = _postgresOptions.PostgresDataBase
+            }.ConnectionString;
+            optionsBuilder.UseNpgsql(connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            new CustomerConfiguration().Configure(modelBuilder.Entity<Genre>());
+        }
+    }
+}
