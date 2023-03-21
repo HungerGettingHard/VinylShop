@@ -4,12 +4,12 @@
     {
         IQueryable<TEntity> GetList();
 
-        TEntity GetByID(object id);
+        TEntity? GetByID(object id);
 
         void Insert(TEntity entity);
 
-        void Delete(object id);
+        void Delete(TEntity entity);
 
-        void Update(TEntity entityToUpdate);
+        void Update();
     }
 }

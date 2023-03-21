@@ -2,6 +2,7 @@ using Persistence.Options;
 using Serilog;
 using Serilog.Events;
 using System.Reflection;
+using VinylShop.Common;
 using VinylShop.ServiceModule;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,6 +48,7 @@ app.UseSerilogRequestLogging(options =>
         diagnosticContext.Set("RequestScheme", httpContext.Request.Scheme);
     };
 });
+app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

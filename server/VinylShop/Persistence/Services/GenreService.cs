@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
 using Application.Interfaces;
 using Application.Models.Requests;
 using Application.Models.Responses;
@@ -9,10 +10,12 @@ namespace Persistence.Services
     public class GenreService : IGenreService
     {
         private readonly IGenericRepository<Genre> _repository;
+        private readonly IValidationService<GenreRequestDto> _validator;
 
-        public GenreService(IUnitOfWork unitOfWork)
+        public GenreService(IUnitOfWork unitOfWork, IValidationService<GenreRequestDto> validator)
         {
             _repository = unitOfWork.GenreRepository;
+            _validator = validator;
         }
 
         public List<GenreResponseDto> GetAllGenres()
@@ -27,9 +30,10 @@ namespace Persistence.Services
                 .ToList();
         }
 
-        public GenreResponseDto GetGenreById(int id)
+        public GenreResponseDto GetGenreById(Guid id)
         {
-            var genre = _repository.GetByID(id);
+            var genre = FindGenreInRepositoryByIdAndThrow(id);
+
             return new GenreResponseDto
             {
                 Id = genre.Id,
@@ -39,23 +43,39 @@ namespace Persistence.Services
 
         public void SetGenre(GenreRequestDto genreDto)
         {
+            _validator.Validate(genreDto);
+
             _repository.Insert(new Genre
             {
                 Name = genreDto.Name,
             });
         }
 
-        public void DeleteGenreById(int id)
+        public void DeleteGenreById(Guid id)
         {
-            _repository.Delete(id);
+            var genre = FindGenreInRepositoryByIdAndThrow(id);
+
+            _repository.Delete(genre);
         }
 
-        public void UpdateGenre(GenreRequestDto genre)
+        public void UpdateGenre(Guid id, GenreRequestDto genreDto)
         {
-            _repository.Update(new Genre
-            {
-                Name = genre.Name
-            });
+            _validator.Validate(genreDto);
+            var genre = FindGenreInRepositoryByIdAndThrow(id);            
+
+            genre.Name = genreDto.Name;
+
+            _repository.Update();
+        }
+
+        private Genre FindGenreInRepositoryByIdAndThrow(Guid id)
+        {
+            var genre = _repository.GetByID(id);
+
+            if (genre == null)
+                throw new NotFoundException(nameof(Genre), id);
+
+            return genre;
         }
     }
 }

@@ -4,6 +4,10 @@ using Application.Interfaces;
 using Persistence.Services;
 using Persistence.DbContext;
 using Persistence.Repository;
+using FluentValidation;
+using Application.Models.Validators;
+using Application.Models.Requests;
+using Persistence.Behaviours;
 
 namespace VinylShop.ServiceModule
 {
@@ -14,6 +18,7 @@ namespace VinylShop.ServiceModule
             services.AddDatabase();
             services.AddRepository();
             services.AddCrudServices();
+            services.AddValidators();
             return services;
         }
 
@@ -33,6 +38,14 @@ namespace VinylShop.ServiceModule
         public static IServiceCollection AddCrudServices(this IServiceCollection services)
         {
             services.AddScoped<IGenreService, GenreService>();
+            return services;
+        }
+
+        public static IServiceCollection AddValidators(this IServiceCollection services)
+        {
+            services.AddScoped<IValidator<GenreRequestDto>, GenreRequestValidator>();
+
+            services.AddScoped<IValidationService<GenreRequestDto>, ValidationService<GenreRequestDto>>();
             return services;
         }
     }

@@ -144,3 +144,4 @@ C:\Users\Саня\Desktop\VinylShop\server\VinylShop\VinylShop\bin\Debug\net6.0\
 C:\Users\Саня\Desktop\VinylShop\server\VinylShop\VinylShop\obj\Debug\net6.0\VinylShop.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Саня\Desktop\VinylShop\server\VinylShop\VinylShop\bin\Debug\net6.0\Persistence.dll
 C:\Users\Саня\Desktop\VinylShop\server\VinylShop\VinylShop\bin\Debug\net6.0\Persistence.pdb
+C:\Users\Саня\Desktop\VinylShop\server\VinylShop\VinylShop\bin\Debug\net6.0\Newtonsoft.Json.dll

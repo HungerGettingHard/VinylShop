@@ -11,7 +11,7 @@
             <returns>Genres list</returns>
             <response code="200">Returns genres list</response>
         </member>
-        <member name="M:VinylShop.Controllers.GenreController.GetGenreById(System.Int32)">
+        <member name="M:VinylShop.Controllers.GenreController.GetGenreById(System.Guid)">
             <summary>
             Gets genre by it's Id.
             </summary>
@@ -26,15 +26,15 @@
             <response code="204">Successfully created new genre</response>
             <response code="400">If item is null</response>
         </member>
-        <member name="M:VinylShop.Controllers.GenreController.UpdateGenre(Application.Models.Requests.GenreRequestDto)">
+        <member name="M:VinylShop.Controllers.GenreController.UpdateGenre(System.Guid,Application.Models.Requests.GenreRequestDto)">
             <summary>
-            Updates Genre.
+            Updates Genre by it's id.
             </summary>
             <response code="200">Successfully update genre</response>
             <response code="400">If item is null</response>
             <response code="404">If item not found</response>
         </member>
-        <member name="M:VinylShop.Controllers.GenreController.DeleteGenreById(System.Int32)">
+        <member name="M:VinylShop.Controllers.GenreController.DeleteGenreById(System.Guid)">
             <summary>
             Deletes genre by it's Id.
             </summary>

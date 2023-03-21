@@ -10,12 +10,12 @@ namespace Application.Interfaces
     {
         public List<GenreResponseDto> GetAllGenres();
 
-        public GenreResponseDto GetGenreById(int id);
+        public GenreResponseDto GetGenreById(Guid id);
 
         public void SetGenre(GenreRequestDto genreDto);
 
-        public void DeleteGenreById(int id);
+        public void DeleteGenreById(Guid id);
 
-        public void UpdateGenre(GenreRequestDto genre);
+        public void UpdateGenre(Guid id, GenreRequestDto genre);
     }
 }

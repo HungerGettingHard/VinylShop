@@ -2,8 +2,6 @@
 using Application.Models.Requests;
 using Application.Models.Responses;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 namespace VinylShop.Controllers
 {
@@ -27,14 +25,7 @@ namespace VinylShop.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<GenreResponseDto>> GetAllGenres()
         {
-            try
-            {
-                return _genreService.GetAllGenres();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
+            return _genreService.GetAllGenres();
         }
 
         /// <summary>
@@ -46,20 +37,9 @@ namespace VinylShop.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<GenreResponseDto> GetGenreById(int id)
+        public ActionResult<GenreResponseDto> GetGenreById(Guid id)
         {
-            try
-            {
-                return _genreService.GetGenreById(id);
-            }
-            catch (NullReferenceException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
+            return _genreService.GetGenreById(id);
         }
 
         /// <summary>
@@ -72,42 +52,26 @@ namespace VinylShop.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult CreateGenre(GenreRequestDto genre)
         {
-            try
-            {
-                _genreService.SetGenre(genre);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
+            _genreService.SetGenre(genre);
+        
+            return NoContent();
         }
 
         /// <summary>
-        /// Updates Genre.
+        /// Updates Genre by it's id.
         /// </summary>
         /// <response code="200">Successfully update genre</response>
         /// <response code="400">If item is null</response>
         /// <response code="404">If item not found</response>
-        [HttpPut]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult UpdateGenre(GenreRequestDto genre)
+        public IActionResult UpdateGenre(Guid id, GenreRequestDto genre)
         {
-            try
-            {
-                _genreService.UpdateGenre(genre);
-                return Ok();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
+            _genreService.UpdateGenre(id, genre);
+         
+            return Ok();
         }
 
         /// <summary>
@@ -118,21 +82,11 @@ namespace VinylShop.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult DeleteGenreById(int id)
+        public IActionResult DeleteGenreById(Guid id)
         {
-            try
-            {
-                _genreService.DeleteGenreById(id);
-                return NoContent();
-            }
-            catch (ArgumentNullException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
+            _genreService.DeleteGenreById(id);
+         
+            return NoContent();
         }
     }
 }

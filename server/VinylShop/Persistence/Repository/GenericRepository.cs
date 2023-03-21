@@ -21,7 +21,7 @@ namespace Persistence.Repository
             return _dbSet;
         }
 
-        public virtual TEntity GetByID(object id)
+        public virtual TEntity? GetByID(object id)
         {
             return _dbSet.Find(id);
         }
@@ -32,17 +32,14 @@ namespace Persistence.Repository
             _context.SaveChanges();
         }
 
-        public virtual void Delete(object id)
+        public virtual void Delete(TEntity entity)
         {
-            var entityToDelete = _dbSet.Find(id);
-            _dbSet.Remove(entityToDelete);
+            _dbSet.Remove(entity);
             _context.SaveChanges();
         }
 
-        public virtual void Update(TEntity entityToUpdate)
+        public virtual void Update()
         {
-            _dbSet.Attach(entityToUpdate);
-            _context.Entry(entityToUpdate).State = EntityState.Modified;
             _context.SaveChanges();
         }
     }
