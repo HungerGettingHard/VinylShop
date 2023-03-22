@@ -19,6 +19,7 @@ namespace Persistence.DbContext
         }
 
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Person> Persons { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,7 +36,8 @@ namespace Persistence.DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new CustomerConfiguration().Configure(modelBuilder.Entity<Genre>());
+            new GenreConfiguration().Configure(modelBuilder.Entity<Genre>());
+            new PersonConfiguration().Configure(modelBuilder.Entity<Person>());
         }
     }
 }
