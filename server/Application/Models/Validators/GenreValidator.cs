@@ -7,7 +7,9 @@ namespace Application.Models.Validators
     {
         public GenreRequestValidator() 
         {
-            RuleFor(genre => genre.Name).Length(2, 45);
+            RuleFor(genre => genre.Name)
+                .NotEmpty()
+                .Length(2, 45);
         }
     }
 }

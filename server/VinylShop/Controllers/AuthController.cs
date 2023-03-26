@@ -1,12 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Models.Requests;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Persistence.Services;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace VinylShop.Controllers
 {

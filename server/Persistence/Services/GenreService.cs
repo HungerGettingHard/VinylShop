@@ -24,7 +24,10 @@ namespace Persistence.Services
                 .Select(genre => new GenreResponseDto
                 {
                     Id = genre.Id,
-                    Name = genre.Name
+                    Name = genre.Name, 
+                    ProductIds = genre.Products
+                        .Select(product => product.Id)
+                        .ToArray()
                 })
                 .OrderBy(genre => genre.Name)
                 .ToList();
@@ -33,11 +36,15 @@ namespace Persistence.Services
         public GenreResponseDto GetGenreById(Guid id)
         {
             var genre = FindGenreInRepositoryByIdAndThrow(id);
+            var productIds = genre.Products
+                .Select(product => product.Id)
+                .ToArray();
 
             return new GenreResponseDto
             {
                 Id = genre.Id,
-                Name = genre.Name
+                Name = genre.Name,
+                ProductIds = productIds
             };
         }
 

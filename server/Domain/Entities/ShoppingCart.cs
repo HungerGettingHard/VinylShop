@@ -1,16 +1,14 @@
 ﻿namespace Domain.Entities
 {
-    public class Product
+    public class ShoppingCart
     {
-        public Product()
+        public ShoppingCart()
         {
-            Genres = new HashSet<Genre>();
             ShoppingCartItems = new HashSet<ShoppingCartItem>();
         }
 
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<Genre> Genres { get; set; }
+        public Person Person { get; set; }
         public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

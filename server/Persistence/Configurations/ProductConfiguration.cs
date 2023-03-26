@@ -18,7 +18,10 @@ namespace Persistence.Configurations
                 .HasMaxLength(100);
 
             builder.HasMany(product => product.Genres)
-                .WithMany(genre => genre.Products);                
+                .WithMany(genre => genre.Products);
+
+            builder.HasMany(product => product.ShoppingCartItems)
+                .WithOne(genre => genre.Product);
         }
     }
 }

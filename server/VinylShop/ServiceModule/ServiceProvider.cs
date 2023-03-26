@@ -39,6 +39,7 @@ namespace VinylShop.ServiceModule
         {
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IProductService, ProductService>();
             return services;
         }
 
@@ -47,10 +48,12 @@ namespace VinylShop.ServiceModule
             services.AddScoped<IValidator<GenreRequestDto>, GenreRequestValidator>();
             services.AddScoped<IValidator<PersonRequestDto>, PersonRequestValidator>();
             services.AddScoped<IValidator<RegisterPersonRequestDto>, RegisterPersonRequestValidator>();
+            services.AddScoped<IValidator<ProductRequestDto>, ProductRequestValidator>();
 
             services.AddScoped<IValidationService<GenreRequestDto>, ValidationService<GenreRequestDto>>();
             services.AddScoped<IValidationService<PersonRequestDto>, ValidationService<PersonRequestDto>>();
             services.AddScoped<IValidationService<RegisterPersonRequestDto>, ValidationService<RegisterPersonRequestDto>>();
+            services.AddScoped<IValidationService<ProductRequestDto>, ValidationService<ProductRequestDto>>();
             return services;
         }
     }

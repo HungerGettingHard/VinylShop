@@ -20,6 +20,9 @@ namespace Persistence.DbContext
 
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Person> Persons { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,7 +32,8 @@ namespace Persistence.DbContext
                 Port = _postgresOptions.PostgresPort,
                 Username = _postgresOptions.PostgresUser,
                 Password = _postgresOptions.PostgresPassword,
-                Database = _postgresOptions.PostgresDataBase
+                Database = _postgresOptions.PostgresDataBase,
+                IncludeErrorDetail = true
             }.ConnectionString;
             optionsBuilder.UseNpgsql(connectionString);
         }
@@ -39,6 +43,8 @@ namespace Persistence.DbContext
             new GenreConfiguration().Configure(modelBuilder.Entity<Genre>());
             new PersonConfiguration().Configure(modelBuilder.Entity<Person>());
             new ProductConfiguration().Configure(modelBuilder.Entity<Product>());
+            new ShoppingCartConfiguration().Configure(modelBuilder.Entity<ShoppingCart>());
+            new ShoppingCartItemConfiguration().Configure(modelBuilder.Entity<ShoppingCartItem>());
         }
     }
 }
