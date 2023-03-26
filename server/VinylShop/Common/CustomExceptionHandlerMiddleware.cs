@@ -40,6 +40,11 @@ namespace VinylShop.Common
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
                     break;
+                case LoginAlreadyExistException _:
+                case LoginNotExistException _:
+                case InvalidPasswordException _:
+                    code = HttpStatusCode.Unauthorized;
+                    break;
             }
 
             context.Response.ContentType = "application/json";

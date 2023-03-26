@@ -16,6 +16,9 @@ namespace Persistence.Configurations
             builder.Property(genre => genre.Name)
                 .IsRequired()
                 .HasMaxLength(45);
+
+            builder.HasMany(genre => genre.Products)
+                .WithMany(product => product.Genres);
         }
     }
 }

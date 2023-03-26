@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Persistence.Options;
 using Serilog;
@@ -23,6 +22,9 @@ builder.Host.UseSerilog();
 // Add services to the container.
 builder.Services.Configure<PostgresOptions>(
     builder.Configuration.GetSection(PostgresOptions.PostgresOptionsString));
+builder.Services.Configure<AuthOptions>(
+    builder.Configuration.GetSection(AuthOptions.AuthOptionsString));
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();

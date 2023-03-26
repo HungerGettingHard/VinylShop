@@ -1,9 +1,9 @@
 ﻿namespace Domain.Entities
 {
-    public class Genre
+    public class Product
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Genre> Genres { get; set; }
     }
 }

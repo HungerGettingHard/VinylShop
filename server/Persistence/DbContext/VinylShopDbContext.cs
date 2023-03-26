@@ -38,6 +38,7 @@ namespace Persistence.DbContext
         {
             new GenreConfiguration().Configure(modelBuilder.Entity<Genre>());
             new PersonConfiguration().Configure(modelBuilder.Entity<Person>());
+            new ProductConfiguration().Configure(modelBuilder.Entity<Product>());
         }
     }
 }

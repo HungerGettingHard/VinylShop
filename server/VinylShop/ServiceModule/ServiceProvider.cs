@@ -17,35 +17,40 @@ namespace VinylShop.ServiceModule
         {
             services.AddDatabase();
             services.AddRepository();
-            services.AddCrudServices();
+            services.AddApplicationServices();
             services.AddValidators();
             return services;
         }
 
-        public static IServiceCollection AddDatabase(this IServiceCollection services)
+        private static IServiceCollection AddDatabase(this IServiceCollection services)
         {
             services.AddDbContext<VinylShopDbContext>();
             services.AddScoped<IVinylShopDbContext, VinylShopDbContext>();
             return services;
         }
 
-        public static IServiceCollection AddRepository(this IServiceCollection services)
+        private static IServiceCollection AddRepository(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
 
-        public static IServiceCollection AddCrudServices(this IServiceCollection services)
+        private static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IGenreService, GenreService>();
+            services.AddScoped<IAuthService, AuthService>();
             return services;
         }
 
-        public static IServiceCollection AddValidators(this IServiceCollection services)
+        private static IServiceCollection AddValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<GenreRequestDto>, GenreRequestValidator>();
+            services.AddScoped<IValidator<PersonRequestDto>, PersonRequestValidator>();
+            services.AddScoped<IValidator<RegisterPersonRequestDto>, RegisterPersonRequestValidator>();
 
             services.AddScoped<IValidationService<GenreRequestDto>, ValidationService<GenreRequestDto>>();
+            services.AddScoped<IValidationService<PersonRequestDto>, ValidationService<PersonRequestDto>>();
+            services.AddScoped<IValidationService<RegisterPersonRequestDto>, ValidationService<RegisterPersonRequestDto>>();
             return services;
         }
     }

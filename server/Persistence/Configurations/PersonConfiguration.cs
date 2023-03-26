@@ -23,7 +23,7 @@ namespace Persistence.Configurations
 
             builder.Property(person => person.Password)
                .IsRequired()
-               .HasMaxLength(45);
+               .HasMaxLength(100);
         }
     }
 }
