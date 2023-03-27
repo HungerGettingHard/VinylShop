@@ -24,6 +24,10 @@ namespace Persistence.Configurations
             builder.Property(person => person.Password)
                .IsRequired()
                .HasMaxLength(100);
+
+            builder.HasOne(person => person.ShoppingCart)
+                .WithOne(cart => cart.Person)
+                .IsRequired();
         }
     }
 }

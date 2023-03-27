@@ -40,10 +40,13 @@ namespace VinylShop.Common
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
                     break;
-                case LoginAlreadyExistException _:
-                case LoginNotExistException _:
+                case LoginAlreadyExistsException _:
+                case LoginNotExistsException _:
                 case InvalidPasswordException _:
                     code = HttpStatusCode.Unauthorized;
+                    break;
+                case CartItemAlreadyExistsException _:
+                    code = HttpStatusCode.Conflict;
                     break;
             }
 

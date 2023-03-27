@@ -1,8 +1,8 @@
 ﻿namespace Application.Common.Exceptions
 {
-    public class LoginAlreadyExistException : Exception
+    public class LoginAlreadyExistsException : Exception
     {
-        public LoginAlreadyExistException(string login)
+        public LoginAlreadyExistsException(string login)
             : base($"Login '{login}' already exists")
         {
         }

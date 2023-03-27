@@ -12,8 +12,8 @@ using Persistence.DbContext;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(VinylShopDbContext))]
-    [Migration("20230326160412_AddShoppingCart")]
-    partial class AddShoppingCart
+    [Migration("20230327092510_AddPrimaryKeyToCartItem")]
+    partial class AddPrimaryKeyToCartItem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -107,11 +107,12 @@ namespace Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
+                        .HasColumnType("uuid");
 
                     b.Property<int>("Amount")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(1);
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
@@ -125,7 +126,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("ShoppingCartItems");
+                    b.ToTable("ShoppingCartItem");
                 });
 
             modelBuilder.Entity("GenreProduct", b =>

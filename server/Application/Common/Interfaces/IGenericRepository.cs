@@ -10,6 +10,8 @@
 
         void Delete(TEntity entity);
 
-        void Update();
+        void Update(TEntity entityToUpdate);
+
+        void SaveChanges();
     }
 }

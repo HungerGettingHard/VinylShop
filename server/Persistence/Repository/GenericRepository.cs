@@ -38,9 +38,15 @@ namespace Persistence.Repository
             _context.SaveChanges();
         }
 
-        public virtual void Update()
+        public virtual void Update(TEntity entityToUpdate)
         {
-            _context.SaveChanges();
+            _dbSet.Attach(entityToUpdate);
+            _context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
+
+        public virtual void SaveChanges()
+        {
+            var n = _context.SaveChanges();
         }
     }
 }

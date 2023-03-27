@@ -22,18 +22,35 @@ namespace Persistence.Services
 
         public List<ProductResponseDto> GetAllProducts(ICollection<Guid> genreIds)
         {
-            return _productRepository.GetList()
-                .Where(product => product.Genres.Any(genre => genreIds.Contains(genre.Id)))
-                .Select(product => new ProductResponseDto
-                {
-                    Id = product.Id,
-                    Name = product.Name,
-                    GenreIds = product.Genres
-                        .Select(genre => genre.Id)
-                        .ToArray()
-                })
-                .OrderBy(product => product.Name)
-                .ToList();
+            if (genreIds.Count == 0)
+            {
+                return _productRepository.GetList()
+                    .Select(product => new ProductResponseDto
+                    {
+                        Id = product.Id,
+                        Name = product.Name,
+                        GenreIds = product.Genres
+                            .Select(genre => genre.Id)
+                            .ToArray()
+                    })
+                    .OrderBy(product => product.Name)
+                    .ToList();
+            }
+            else
+            {
+                return _productRepository.GetList()
+                    .Where(product => product.Genres.Any(genre => genreIds.Contains(genre.Id)))
+                    .Select(product => new ProductResponseDto
+                    {
+                        Id = product.Id,
+                        Name = product.Name,
+                        GenreIds = product.Genres
+                            .Select(genre => genre.Id)
+                            .ToArray()
+                    })
+                    .OrderBy(product => product.Name)
+                    .ToList();
+            }
         }
 
         public ProductResponseDto GetProductById(Guid id)
@@ -101,7 +118,7 @@ namespace Persistence.Services
             product.Name = productDto.Name;
             product.Genres = genres;
 
-            _productRepository.Update();
+            _productRepository.SaveChanges();
         }
 
         private Product FindProductInRepositoryByIdAndThrow(Guid id)

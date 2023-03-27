@@ -7,5 +7,7 @@ namespace Application.Common.Interfaces
         public IGenericRepository<Genre> GenreRepository { get; }
         public IGenericRepository<Person> PersonRepository { get; }
         public IGenericRepository<Product> ProductRepository { get; }
+        public IGenericRepository<ShoppingCart> ShoppingCartRepository { get; }
+        public IGenericRepository<ShoppingCartItem> ShoppingCartItemRepository { get; }
     }
 }

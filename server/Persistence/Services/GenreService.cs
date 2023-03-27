@@ -72,7 +72,7 @@ namespace Persistence.Services
 
             genre.Name = genreDto.Name;
 
-            _repository.Update();
+            _repository.SaveChanges();
         }
 
         private Genre FindGenreInRepositoryByIdAndThrow(Guid id)

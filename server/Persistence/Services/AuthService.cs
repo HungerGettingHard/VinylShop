@@ -15,7 +15,8 @@ namespace Persistence.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly IGenericRepository<Person> _repository;
+        private readonly IGenericRepository<Person> _personRepository;
+        private readonly IGenericRepository<ShoppingCart> _cartRepository;
         private readonly IValidationService<PersonRequestDto> _personValidator;
         private readonly IValidationService<RegisterPersonRequestDto> _registerValidator;
         private readonly AuthOptions _options;
@@ -23,7 +24,8 @@ namespace Persistence.Services
         public AuthService(IUnitOfWork unitOfWork, IValidationService<PersonRequestDto> personValidator,
             IValidationService<RegisterPersonRequestDto> registerValidator, IOptions<AuthOptions> options)
         {
-            _repository = unitOfWork.PersonRepository;
+            _personRepository = unitOfWork.PersonRepository;
+            _cartRepository = unitOfWork.ShoppingCartRepository;
             _personValidator = personValidator;
             _registerValidator = registerValidator;
             _options = options.Value;
@@ -63,29 +65,32 @@ namespace Persistence.Services
         {
             _registerValidator.Validate(personRequest);
 
-            var isLoginExist = _repository.GetList()
-                .Where(person => person.Login == personRequest.Login)
-                .Any();
+            var isLoginExist = _personRepository.GetList()
+                .Any(person => person.Login == personRequest.Login);
 
             if (isLoginExist)
-                throw new LoginAlreadyExistException(personRequest.Login);
+                throw new LoginAlreadyExistsException(personRequest.Login);
 
-            _repository.Insert(new Person
+            var cart = new ShoppingCart();
+
+            _cartRepository.Insert(cart);
+            _personRepository.Insert(new Person
             {
                 Name = personRequest.Name,
                 Login = personRequest.Login,
-                Password = Argon2.Hash(personRequest.Password)
+                Password = Argon2.Hash(personRequest.Password),
+                ShoppingCart = cart
             });
         }
 
         private void ValidatePersonCredentialsAndThrow(PersonRequestDto personRequest)
         {
-            var person = _repository.GetList()
+            var person = _personRepository.GetList()
                 .Where(person => person.Login == personRequest.Login)
                 .FirstOrDefault();
 
             if (person == null)
-                throw new LoginNotExistException(personRequest.Login);
+                throw new LoginNotExistsException(personRequest.Login);
 
             if (!Argon2.Verify(person.Password, personRequest.Password))
                 throw new InvalidPasswordException();

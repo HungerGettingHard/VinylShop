@@ -40,6 +40,7 @@ namespace VinylShop.ServiceModule
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IShoppingCartService, ShoppingCartService>();
             return services;
         }
 
@@ -49,11 +50,15 @@ namespace VinylShop.ServiceModule
             services.AddScoped<IValidator<PersonRequestDto>, PersonRequestValidator>();
             services.AddScoped<IValidator<RegisterPersonRequestDto>, RegisterPersonRequestValidator>();
             services.AddScoped<IValidator<ProductRequestDto>, ProductRequestValidator>();
+            services.AddScoped<IValidator<UpdateShoppingCartRequestDto>, UpdateShoppingCartRequestValidator>();
+            services.AddScoped<IValidator<AddShoppingCartRequestDto>, AddShoppingCartRequestValidator>();
 
             services.AddScoped<IValidationService<GenreRequestDto>, ValidationService<GenreRequestDto>>();
             services.AddScoped<IValidationService<PersonRequestDto>, ValidationService<PersonRequestDto>>();
             services.AddScoped<IValidationService<RegisterPersonRequestDto>, ValidationService<RegisterPersonRequestDto>>();
             services.AddScoped<IValidationService<ProductRequestDto>, ValidationService<ProductRequestDto>>();
+            services.AddScoped<IValidationService<UpdateShoppingCartRequestDto>, ValidationService<UpdateShoppingCartRequestDto>>();
+            services.AddScoped<IValidationService<AddShoppingCartRequestDto>, ValidationService<AddShoppingCartRequestDto>>();
             return services;
         }
     }
