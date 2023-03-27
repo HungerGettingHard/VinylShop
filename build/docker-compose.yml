@@ -22,6 +22,17 @@ services:
     ports:
       - "5050:80"
 
+  server:
+    container_name: server
+    build:
+      context: ../server
+      dockerfile: ./Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PostgresOptions:POSTGRES_HOST=host.docker.internal
+    ports:
+      - "5000:80"
+
 networks:
   default:
     name: postgre-service_default

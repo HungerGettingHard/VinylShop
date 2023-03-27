@@ -43,6 +43,7 @@ namespace VinylShop.ServiceModule
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
             services.AddScoped<IOrderStatusService, OrderStatusService>();
             services.AddScoped<IOrderDestinationService, OrderDestinationService>();
+            services.AddScoped<IOrderService, OrderService>();
             return services;
         }
 

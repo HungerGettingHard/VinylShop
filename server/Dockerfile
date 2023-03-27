@@ -13,5 +13,5 @@ RUN dotnet publish -c Release -o out
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /App
-COPY --from=build-env /App/out .
-ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
+COPY --from=build /App/out .
+ENTRYPOINT ["dotnet", "VinylShop.dll"]

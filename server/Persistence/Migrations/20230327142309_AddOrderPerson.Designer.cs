@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Persistence.DbContext;
@@ -11,9 +12,10 @@ using Persistence.DbContext;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(VinylShopDbContext))]
-    partial class VinylShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230327142309_AddOrderPerson")]
+    partial class AddOrderPerson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres", (string)null);
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>
@@ -58,7 +60,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Domain.Entities.OrderDestination", b =>
@@ -75,7 +77,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderDestination", (string)null);
+                    b.ToTable("OrderDestination");
                 });
 
             modelBuilder.Entity("Domain.Entities.OrderItem", b =>
@@ -101,7 +103,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Domain.Entities.OrderStatus", b =>
@@ -118,7 +120,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatuses", (string)null);
+                    b.ToTable("OrderStatuses");
                 });
 
             modelBuilder.Entity("Domain.Entities.Person", b =>
@@ -151,7 +153,7 @@ namespace Persistence.Migrations
                     b.HasIndex("ShoppingCartId")
                         .IsUnique();
 
-                    b.ToTable("Persons", (string)null);
+                    b.ToTable("Persons");
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
@@ -168,7 +170,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Domain.Entities.ShoppingCart", b =>
@@ -180,7 +182,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShoppingCarts", (string)null);
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("Domain.Entities.ShoppingCartItem", b =>
@@ -206,7 +208,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("ShoppingCartItems", (string)null);
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("GenreProduct", b =>
@@ -221,7 +223,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("GenreProduct", (string)null);
+                    b.ToTable("GenreProduct");
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>

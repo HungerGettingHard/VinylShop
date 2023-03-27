@@ -18,12 +18,12 @@ namespace Persistence.Configurations
                 .HasMaxLength(45);
 
             builder.Property(person => person.Login)
-              .IsRequired()
-              .HasMaxLength(45);
+                .IsRequired()
+                .HasMaxLength(45);
 
             builder.Property(person => person.Password)
-               .IsRequired()
-               .HasMaxLength(100);
+                .IsRequired()
+                .HasMaxLength(100);
 
             builder.HasOne(person => person.ShoppingCart)
                 .WithOne(cart => cart.Person)

@@ -13,6 +13,10 @@ namespace Persistence.Configurations
                 .IsRequired()
                 .HasColumnName("Id");
 
+            builder.HasOne(order => order.Person)
+                .WithMany(person => person.Orders)
+                .IsRequired();
+
             builder.HasMany(order => order.Products)
                 .WithMany(product => product.Orders)
                 .UsingEntity<OrderItem>(
@@ -31,6 +35,9 @@ namespace Persistence.Configurations
                             .IsRequired()
                             .HasColumnName("Id");
                     });
+
+            builder.HasOne(order => order.OrderDestination)
+                .WithMany(destination => destination.Orders);
         }
     }
 }
