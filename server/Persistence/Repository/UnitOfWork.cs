@@ -12,6 +12,7 @@ namespace Persistence.Repository
         private GenericRepository<Product> _productRepository;
         private GenericRepository<ShoppingCart> _shoppingCartRepository;
         private GenericRepository<ShoppingCartItem> _shoppingCartItemRepository;
+        private GenericRepository<OrderStatus> _orderStatusRepository;
 
         public UnitOfWork(VinylShopDbContext context)
         {
@@ -23,6 +24,7 @@ namespace Persistence.Repository
         public IGenericRepository<Product> ProductRepository => _productRepository ??= new GenericRepository<Product>(_context);
         public IGenericRepository<ShoppingCart> ShoppingCartRepository => _shoppingCartRepository ??= new GenericRepository<ShoppingCart>(_context);
         public IGenericRepository<ShoppingCartItem> ShoppingCartItemRepository => _shoppingCartItemRepository ??= new GenericRepository<ShoppingCartItem>(_context);
+        public IGenericRepository<OrderStatus> OrderStatusRepository => _orderStatusRepository ??= new GenericRepository<OrderStatus>(_context);
 
         #region Dispose
         private bool disposed = false;

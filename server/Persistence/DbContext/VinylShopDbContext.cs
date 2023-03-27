@@ -22,6 +22,8 @@ namespace Persistence.DbContext
         public DbSet<Person> Persons { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,6 +45,7 @@ namespace Persistence.DbContext
             new PersonConfiguration().Configure(modelBuilder.Entity<Person>());
             new ProductConfiguration().Configure(modelBuilder.Entity<Product>());
             new ShoppingCartConfiguration().Configure(modelBuilder.Entity<ShoppingCart>());
+            new OrderStatusConfiguration().Configure(modelBuilder.Entity<OrderStatus>());
         }
     }
 }
