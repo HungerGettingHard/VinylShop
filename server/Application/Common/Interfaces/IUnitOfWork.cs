@@ -10,5 +10,6 @@ namespace Application.Common.Interfaces
         public IGenericRepository<ShoppingCart> ShoppingCartRepository { get; }
         public IGenericRepository<ShoppingCartItem> ShoppingCartItemRepository { get; }
         public IGenericRepository<OrderStatus> OrderStatusRepository { get; }
+        public IGenericRepository<OrderDestination> OrderDestinationRepository { get; }
     }
 }

@@ -11,5 +11,6 @@ namespace Application.Common.DbContext
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<OrderDestination> OrderDestination { get; set; }
     }
 }
