@@ -1,23 +1,34 @@
 import { Box, Typography } from "@mui/material";
 import colors from "../themes/colors";
+import image from '../assets/logo.png'
 
 function Header() {
   return(
     <Box sx={{
-      backgroundColor: colors.azure,
-      height: '15%',
+      backgroundColor: colors.dark,
+      height: 120,
+      width: '100%',
       alignItems: 'center',
+      justifyContent: 'center',
       display: 'flex',
-      boxShadow: 2
+      position: 'fixed',
+      zIndex: 1
     }}>
+      <Box component="img"
+        sx={{
+          height: 70
+        }}
+        alt="Изображение"
+        src={image}
+      />
       <Typography sx={{
         display: 'flex',
-        padding: '50px',
-        fontSize: 36,
+        ml: '30px',
+        fontSize: 50,
         fontWeight: 'bold',
         color: colors.white
       }}>
-        ПЛАСТИНКИ
+        VINYL
       </Typography>
     </Box>
   );

@@ -1,17 +1,16 @@
 import { Box } from '@mui/material';
 import Header from './components/Header';
-import Catalog from './pages/Catalog';
+import CatalogPage from './pages/CatalogPage';
 import colors from './themes/colors';
 
 function App() {
   return (
     <Box sx={{
-      backgroundColor: colors.lightGray,
-      height: '100%',
-      flexDirection: 'column'
+      backgroundColor: colors.darkBackground,
+      minHeight: '100%',
     }}>
       <Header/>
-      <Catalog/>
+      <CatalogPage/>
     </Box>
   );
 }

@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
 
 const initialState = {
-  genres: [{ key: 1, name: "name"}],
+  genres: [],
   selectedGenres: []
 } 
 

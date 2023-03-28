@@ -1,30 +1,34 @@
-import { Box, Checkbox, Typography } from "@mui/material"
+import { ButtonBase, Typography } from "@mui/material"
+import { useState } from "react"
 import colors from '../../themes/colors'
 
 function GenreSelectorItem(props) {
   const genreName = props.props.name
+  const [isSelected, setIsSelected] = useState(true);
+
+  const handleGenreClick = () => {
+    setIsSelected(!isSelected)
+  }
 
   return(
-    <Box sx={{
-      width: '100%',
-      flexDirection: 'row',
+    <ButtonBase sx={{
       display: 'flex',
-      alignItems: 'center'
-    }}>
-      <Checkbox defaultChecked sx={{
-        color: colors.darkRed,
-        '&.Mui-checked': {
-          color: colors.darkRed
-        }
-      }}/>
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 1,
+      margin: 0.5,
+      minWidth: 85,
+      borderRadius: 2,
+      backgroundColor: isSelected ? colors.purple : null,
+    }} onClick={handleGenreClick}>
       <Typography sx={{
         display: 'flex',
-        width: 2,
-        fontSize: 20
+        fontSize: 20,
+        color: isSelected ? colors.white : colors.gray
       }}>
         {genreName}
       </Typography>
-    </Box>
+    </ButtonBase>
   )
 }
 
