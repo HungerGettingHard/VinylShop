@@ -32,6 +32,8 @@ services:
       - PostgresOptions:POSTGRES_HOST=host.docker.internal
     ports:
       - "5000:80"
+    expose:
+      - "5000"
 
 networks:
   default:
