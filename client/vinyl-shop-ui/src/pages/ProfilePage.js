@@ -15,8 +15,8 @@ function ProfilePage() {
       display: 'flex',
       alignItems: 'center',
       pt: '120px',
-      justifyContent: 'center',
-      flexDirection: 'row'
+      flexDirection: 'row',
+      width: '100%'
     }}>
     </Box>
   );

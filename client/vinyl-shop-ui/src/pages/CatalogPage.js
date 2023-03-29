@@ -17,8 +17,8 @@ function CatalogPage() {
       display: 'flex',
       alignItems: 'center',
       pt: '120px',
-      justifyContent: 'center',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      width: '100%'
     }}>
       <GenreSelectorBox/>
       <CatalogBox/>
