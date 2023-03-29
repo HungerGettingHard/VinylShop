@@ -60,14 +60,15 @@ namespace Persistence.Services
         {
             _addValidator.Validate(shoppingCartItemDto);
 
-            var cart = _cartRepository.GetByID(shoppingCartItemDto.ShoppingCartId);
+            var cart = _cartRepository.GetList()
+                .Include(cart => cart.Products)
+                .FirstOrDefault(cart => cart.Id == shoppingCartItemDto.ShoppingCartId);
             if (cart == null)
                 throw new NotFoundException(nameof(ShoppingCart), shoppingCartItemDto.ShoppingCartId);
 
             var isAlreadyExists = cart.Products.Any(product => product.Id == shoppingCartItemDto.ProductId);
             if (isAlreadyExists)
                 throw new CartItemAlreadyExistsException(shoppingCartItemDto.ShoppingCartId, shoppingCartItemDto.ProductId);
-
 
             var product = _productRepository.GetByID(shoppingCartItemDto.ProductId);
             if (product == null)
