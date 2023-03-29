@@ -1,15 +1,13 @@
 import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import CatalogBox from "../components/catalog/CatalogBox";
-import GenreSelectorBox from "../components/genre/GenreSelectorBox";
-import { setCatalog } from '../features/sideMenuSlice'
+import { setCart } from '../features/sideMenuSlice'
 
-function CatalogPage() {
+function CartPage() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setCatalog())
+    dispatch(setCart())
   }, [])
 
   return(
@@ -20,10 +18,8 @@ function CatalogPage() {
       justifyContent: 'center',
       flexDirection: 'column'
     }}>
-      <GenreSelectorBox/>
-      <CatalogBox/>
     </Box>
   );
 }
 
-export default CatalogPage
+export default CartPage

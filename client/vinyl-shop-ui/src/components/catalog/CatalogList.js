@@ -1,16 +1,21 @@
 import { Box } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux' 
 import { getProducts } from "../../app/actions/catalog";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CatalogListItem from './CatalogListItem';
 
 function CatalogList() {
   const products = useSelector(state => state.catalog.products) 
   const selectedGenres = useSelector(state => state.genre.selectedGenres)
+  const [isSetup, setIsSetup] = useState(true)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProducts(selectedGenres))
+    if (!isSetup) {
+      dispatch(getProducts(selectedGenres))
+    } else {
+      setIsSetup(false)
+    }
   }, [selectedGenres])
   
   return(

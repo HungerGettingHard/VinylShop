@@ -1,13 +1,9 @@
 import axios from 'axios'
 import { setAll } from "../../features/catalog/catalogSlice";
 import * as qs from 'qs'
-import { stringify } from 'qs';
-
 
 export const getProducts = (genreIds) => {
     return async (dispatch) => {
-        // const text = genreIds.join("&genreIds=")
-        
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Product`, {
             params: {
                 genreIds: genreIds

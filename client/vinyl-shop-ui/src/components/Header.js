@@ -1,6 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box, ButtonBase, Typography } from "@mui/material";
 import colors from "../themes/colors";
-import image from '../assets/logo.png'
+import image from '../assets/logo.png';
 
 function Header() {
   return(
