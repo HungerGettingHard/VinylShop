@@ -9,6 +9,8 @@ namespace Application.Models.Validators
         {
             RuleFor(product => product.Name)
                 .NotEmpty();
+            RuleFor(product => product.Price)
+                .GreaterThanOrEqualTo(0);
         }
     }
 }

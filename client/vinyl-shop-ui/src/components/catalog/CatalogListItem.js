@@ -1,9 +1,16 @@
-import { Box, Typography } from "@mui/material"
+import { Box, ButtonBase, Typography } from "@mui/material"
 import colors from '../../themes/colors'
-import image from '../../assets/panic.jpg'
+import MenuIcon from '@mui/icons-material/Menu';
+import { useDispatch } from "react-redux";
+import { open } from '../../features/catalog/catalogDialogSlice'
 
 function CatalogListItem(props) {
-  const productName = props.props.name
+  const product = { ...props.product }
+  const dispatch = useDispatch()
+
+  const onOpenProduct = () => {
+    dispatch(open(product))
+  }
 
   return(
     <Box sx={{
@@ -22,7 +29,7 @@ function CatalogListItem(props) {
           width: 250,
         }}
         alt="Изображение"
-        src={image}/>
+        src={product.image}/>
     <Box sx={{
       display: 'flex',
       width: '100%',
@@ -35,10 +42,25 @@ function CatalogListItem(props) {
         display: 'flex',
         fontSize: 20,
         color: colors.white,
-      }}>
-        {productName}
+        ml: 3, mr: 3,
+      }}
+      noWrap={true}>
+        {product.name}
       </Typography>
     </Box>
+    <ButtonBase sx={{
+      position: 'absolute',
+      width: 35,
+      height: 35,
+      backgroundColor: colors.purple,
+      m: 1,
+      borderRadius: 2,
+      boxShadow: 4,
+    }} onClick={onOpenProduct}>
+      <MenuIcon sx={{
+        color: colors.white
+      }}/>
+    </ButtonBase>
   </Box>)
 }
 

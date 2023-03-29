@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material'
+import { Box } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux' 
 import { getProducts } from "../../app/actions/catalog";
 import { useEffect } from "react";
@@ -20,7 +20,7 @@ function CatalogList() {
       display: 'flex',
       justifyContent: 'center'
     }}>
-      {products.map((product) => <CatalogListItem key={product.key} props={product}/>)}
+      {products.map((product) => <CatalogListItem key={product.key} product={{...product}} />)}
     </Box>
   );
 }

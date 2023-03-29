@@ -6,6 +6,7 @@ const colors = {
     dark: '#252529',
     red: '#ec738a',
     purple: '#987baa',
+    sand: '#fcf0d1'
 }
 
 export default colors

@@ -46,7 +46,7 @@ namespace Persistence.Repository
 
         public virtual void SaveChanges()
         {
-            var n = _context.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }

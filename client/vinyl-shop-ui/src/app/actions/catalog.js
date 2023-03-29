@@ -7,7 +7,11 @@ export const getProducts = () => {
         const products = response.data.map((product) => {
             return ({
                 key: product.id,
-                name: product.name
+                name: product.name,
+                image: product.imageLink,
+                price: product.price,
+                genres: product.genres,
+                description: product.description
             })
         })
         dispatch(setAll(products))

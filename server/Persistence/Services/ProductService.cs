@@ -29,9 +29,16 @@ namespace Persistence.Services
                     {
                         Id = product.Id,
                         Name = product.Name,
-                        GenreIds = product.Genres
-                            .Select(genre => genre.Id)
-                            .ToArray()
+                        Genres = product.Genres
+                            .Select(genre => new ProductGenreResponseDto
+                            {
+                                Id = genre.Id,
+                                Name = genre.Name
+                            })
+                            .ToArray(),
+                        ImageLink = product.ImageLink,
+                        Price = product.Price,
+                        Description = product.Description
                     })
                     .OrderBy(product => product.Name)
                     .ToList();
@@ -44,9 +51,16 @@ namespace Persistence.Services
                     {
                         Id = product.Id,
                         Name = product.Name,
-                        GenreIds = product.Genres
-                            .Select(genre => genre.Id)
-                            .ToArray()
+                        Genres = product.Genres
+                            .Select(genre => new ProductGenreResponseDto
+                            {
+                                Id = genre.Id,
+                                Name = genre.Name
+                            })
+                            .ToArray(),
+                        ImageLink = product.ImageLink,
+                        Price = product.Price,
+                        Description = product.Description
                     })
                     .OrderBy(product => product.Name)
                     .ToList();
@@ -56,15 +70,22 @@ namespace Persistence.Services
         public ProductResponseDto GetProductById(Guid id)
         {
             var product = FindProductInRepositoryByIdAndThrow(id);
-            var genreIds = product.Genres
-                .Select(genre => genre.Id)
+            var genres = product.Genres
+                .Select(genre => new ProductGenreResponseDto
+                {
+                    Id = genre.Id,
+                    Name = genre.Name
+                })
                 .ToArray();
 
             return new ProductResponseDto
             {
                 Id = product.Id,
                 Name = product.Name,
-                GenreIds = genreIds
+                Genres = genres,
+                ImageLink = product.ImageLink,
+                Price = product.Price,
+                Description = product.Description
             };
         }
 
@@ -87,7 +108,10 @@ namespace Persistence.Services
             _productRepository.Insert(new Product
             {
                 Name = product.Name,
-                Genres = genres
+                Genres = genres,
+                Description = product.Description,
+                Price = product.Price,
+                ImageLink = product.ImageLink
             });
         }
 
