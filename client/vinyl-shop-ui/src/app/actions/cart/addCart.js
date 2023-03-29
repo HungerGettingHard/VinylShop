@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCart } from './getCart'
 
 export const addCart = (productId) => {
     return async (dispatch) => {
@@ -7,7 +8,7 @@ export const addCart = (productId) => {
                 shoppingCartId: process.env.REACT_APP_CART_ID
             })
                 
-        console.log(response.data)
+        dispatch(getCart())
     }
 }
 

@@ -1,15 +1,16 @@
 import { Box } from '@mui/material'
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCart } from '../../app/actions/cart/getCart'
+import CartItem from './CartItem';
 
 function CartList() {
-  // const cartItems = useSelector(state => state.catalog.products) 
+  const cartItems = useSelector(state => state.cart.cartItems) 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getCart())
-  })
+  }, [])
 
   return(
     <Box sx={{
@@ -18,7 +19,7 @@ function CartList() {
       display: 'flex',
       justifyContent: 'center'
     }}>
-      {/* products.map((product) => <CatalogListItem key={product.key} product={{...product}} />) */}
+      {cartItems.map((item) => <CartItem key={item.id} item={{...item}} />)}
     </Box>
   );
 }

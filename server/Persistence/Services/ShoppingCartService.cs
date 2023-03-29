@@ -46,7 +46,9 @@ namespace Persistence.Services
                     CartItemId = item.Id,
                     Amount = item.Amount,
                     ProductId = item.Product.Id,
-                    ProductName = item.Product.Name
+                    ProductName = item.Product.Name,
+                    ImageLink = item.Product.ImageLink,
+                    Price = item.Product.Price
                 }).ToArray();
 
             return new ShoppingCartResponseDto
