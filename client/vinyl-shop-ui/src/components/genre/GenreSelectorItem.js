@@ -1,13 +1,23 @@
 import { ButtonBase, Typography } from "@mui/material"
 import { useState } from "react"
 import colors from '../../themes/colors'
+import { setSelectedItem, removeSelectedItem } from "../../features/genres/genresSlice"
+import { useDispatch } from "react-redux"
 
 function GenreSelectorItem(props) {
   const genreName = props.props.name
+  const genreId = props.props.key 
   const [isSelected, setIsSelected] = useState(true);
+  const dispatch = useDispatch()
 
   const handleGenreClick = () => {
-    setIsSelected(!isSelected)
+    if (isSelected) {
+      dispatch(removeSelectedItem(genreId))
+    } else {
+      dispatch(setSelectedItem(genreId))
+    }
+    
+    setIsSelected(!isSelected)    
   }
 
   return(

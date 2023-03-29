@@ -1,9 +1,24 @@
 import axios from 'axios'
 import { setAll } from "../../features/catalog/catalogSlice";
+import * as qs from 'qs'
+import { stringify } from 'qs';
 
-export const getProducts = () => {
+
+export const getProducts = (genreIds) => {
     return async (dispatch) => {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Product`)
+        // const text = genreIds.join("&genreIds=")
+        
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Product`, {
+            params: {
+                genreIds: genreIds
+            }, 
+            headers: {
+                accept: 'text/plain'
+            },
+            paramsSerializer:  {
+                serialize: (params) => qs.stringify(params, {arrayFormat: 'repeat'})
+            }})
+
         const products = response.data.map((product) => {
             return ({
                 key: product.id,
@@ -12,8 +27,8 @@ export const getProducts = () => {
                 price: product.price,
                 genres: product.genres,
                 description: product.description
-            })
-        })
+            })})
+        
         dispatch(setAll(products))
     }
 }

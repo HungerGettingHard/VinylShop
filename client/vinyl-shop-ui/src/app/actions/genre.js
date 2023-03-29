@@ -10,6 +10,11 @@ export const getGenres = () => {
                 name: genre.name
             })
         })
-        dispatch(setAll(genres))
+        const genreIds = response.data.map((genre) => genre.id)
+
+        dispatch(setAll({
+            genres: genres, 
+            genreIds: genreIds
+        }))
     }
 }

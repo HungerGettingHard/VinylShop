@@ -111,7 +111,7 @@ function CatalogDialog() {
         justifyContent: 'center', 
         flexWrap: 'wrap'
       }}>
-        {productInfo.genres.map((genre) => <Typography sx={{
+        {productInfo.genres.map((genre) => <Typography key={genre.id} sx={{
           backgroundColor: colors.purple,
           display: 'flex',
           alignItems: 'center',

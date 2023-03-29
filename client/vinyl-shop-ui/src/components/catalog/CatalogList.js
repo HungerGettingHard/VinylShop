@@ -10,8 +10,8 @@ function CatalogList() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProducts())
-  }, [])
+    dispatch(getProducts(selectedGenres))
+  }, [selectedGenres])
   
   return(
     <Box sx={{
