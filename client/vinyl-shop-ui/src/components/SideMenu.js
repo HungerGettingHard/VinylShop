@@ -10,10 +10,6 @@ import { Link } from "react-router-dom";
 function SideMenu() {
   const sideMenu = useSelector(state => state.menu) 
 
-  useEffect(() => {
-    console.log(sideMenu)
-  }, [sideMenu])
-
   return(
     <Box sx={{
         height: '100%',

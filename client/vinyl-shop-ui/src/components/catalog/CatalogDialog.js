@@ -4,6 +4,7 @@ import { Box, ButtonBase, Typography } from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close';
 import { close } from '../../features/catalog/catalogDialogSlice'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { addCart } from "../../app/actions/cart/addCart";
 
 function CatalogDialog() {
   const productInfo = useSelector(store => store.catalogDialog.productInfo)
@@ -11,6 +12,10 @@ function CatalogDialog() {
 
   const onClose = () => {
     dispatch(close())
+  }
+
+  const onAddToCart = () => {
+    dispatch(addCart(productInfo.key))
   }
 
   return(
@@ -88,7 +93,7 @@ function CatalogDialog() {
           alignItems: 'center', 
           color: colors.white,  
         }}>{`Цена: ${productInfo.price}`}</Typography>
-        <ButtonBase sx={{
+        <ButtonBase onClick={onAddToCart} sx={{
           width: 40,
           height: 40,
           borderRadius: 2,

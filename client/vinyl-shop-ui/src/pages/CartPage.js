@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import CartBox from "../components/cart/CartBox";
 import { setCart } from '../features/sideMenuSlice'
 
 function CartPage() {
@@ -18,6 +19,7 @@ function CartPage() {
       flexDirection: 'column',
       width: '100%',
     }}>
+      <CartBox/>
     </Box>
   );
 }
