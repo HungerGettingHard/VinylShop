@@ -14,9 +14,9 @@ function CartPage() {
     <Box sx={{
       display: 'flex',
       alignItems: 'center',
-      pt: '120px',
-      justifyContent: 'center',
-      flexDirection: 'column'
+      pt: '120px',  
+      flexDirection: 'column',
+      width: '100%',
     }}>
     </Box>
   );
