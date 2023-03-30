@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteCart } from "../../app/actions/cart/deleteCart";
+import { updateCart } from '../../app/actions/cart/updateCart'
 
 function CartItem(props) {
   const item = props.item
@@ -12,6 +13,15 @@ function CartItem(props) {
   
   const onDeleteItem = () => {
     dispatch(deleteCart(item.id))
+  }
+
+  const onChangeItem = (sign) => {
+    const queryAmount = item.amount + sign
+    if (queryAmount > 0) {
+      dispatch(updateCart({
+        id: item.id,
+        amount: queryAmount
+      }))}
   }
 
   return(
@@ -64,7 +74,7 @@ function CartItem(props) {
             width: 40, 
             height: 40,
             borderRadius: 2
-          }}>
+          }} onClick={() => onChangeItem(-1)}>
             <RemoveIcon sx={{ color: colors.white }}/>
           </ButtonBase>
           <Typography sx={{
@@ -80,7 +90,7 @@ function CartItem(props) {
             width: 40, 
             height: 40,
             borderRadius: 2
-          }}>
+          }} onClick={() => onChangeItem(1)}>
             <AddIcon sx={{ color: colors.white }}/>
           </ButtonBase>
           <ButtonBase sx={{
@@ -92,6 +102,21 @@ function CartItem(props) {
           }} onClick={onDeleteItem}>
             <DeleteIcon sx={{ color: colors.white }}/>
           </ButtonBase>
+        </Box>
+
+        <Box sx={{
+          width: '100%',
+          height: 90,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Typography sx={{
+            color: colors.white,
+            fontSize: 20
+          }}>
+            {`Цена: ${item.price * item.amount} руб.`}
+          </Typography>
         </Box>
       </Box>    
     </Box>)
