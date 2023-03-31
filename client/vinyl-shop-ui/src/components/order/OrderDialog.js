@@ -1,14 +1,22 @@
-import { Box, ButtonBase} from "@mui/material"
+import { Box, ButtonBase, Typography } from "@mui/material"
 import colors from '../../themes/colors'
 import CloseIcon from '@mui/icons-material/Close';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { close } from '../../features/order/orderDialogSlice'
 import OrderDialogList from "./OrderDialogList";
+import DestinationSelector from "../destination/DestinationSelector";
+import { makeOrder } from '../../app/actions/order/makeOrder'
 
 function OrderDialog() {
     const dispatch = useDispatch()
+    const selectedDestination = useSelector(store => store.orderDialog.selectedDestination)
 
     const onClose = () => {
+      dispatch(close())
+    }
+
+    const onMakeOrder = () => {
+      dispatch(makeOrder(selectedDestination))
       dispatch(close())
     }
 
@@ -41,12 +49,31 @@ function OrderDialog() {
       </Box>
 
       <Box sx={{
-        height: 500,
+        height: 460,
         width: 250,
         backgroundColor: colors.dark,
-        borderRadius: 2
+        borderRadius: 2,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        pt: 5,
+        flexDirection: 'column'
       }}>
-
+        <DestinationSelector/>
+        <ButtonBase sx={{
+          height: 60, width: 150,
+          backgroundColor: colors.red,
+          borderRadius: 2,
+          mb: 4
+        }} onClick={onMakeOrder}>
+          <Typography sx={{
+            color: colors.white, 
+            fontWeight: 'bold',
+            fontSize: 18,
+            textAlign: 'center'}}>
+            Заказать
+          </Typography>
+        </ButtonBase>
       </Box>
     </Box>)
 }

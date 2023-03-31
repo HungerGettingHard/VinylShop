@@ -13,12 +13,14 @@ namespace Persistence.Services
         private readonly IGenericRepository<Order> _orderRepository;
         private readonly IGenericRepository<OrderDestination> _orderDestinationRepository;
         private readonly IGenericRepository<ShoppingCart> _shoppingCartRepository;
+        private readonly IGenericRepository<ShoppingCartItem> _shoppingCartItemRepository;
 
         public OrderService(IUnitOfWork unitOfWork)
         {
             _orderRepository = unitOfWork.OrderRepository;
             _orderDestinationRepository = unitOfWork.OrderDestinationRepository;
             _shoppingCartRepository = unitOfWork.ShoppingCartRepository;
+            _shoppingCartItemRepository = unitOfWork.ShoppingCartItemRepository;
         }
 
         public List<OrderResponseDto> GetAllOrders()
@@ -63,7 +65,10 @@ namespace Persistence.Services
             if (destination == null)
                 throw new NotFoundException(nameof(OrderDestination), request.OrderDestinationId);
 
-            // ToDo: clear cart
+            foreach (var cartItem in cart.ShoppingCartItems)
+            {
+                _shoppingCartItemRepository.Delete(cartItem);
+            }
 
             _orderRepository.Insert(new Order()
             {
