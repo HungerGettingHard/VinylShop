@@ -7,6 +7,7 @@ import colors from './themes/colors';
 import CatalogDialogBox from './components/catalog/CatalogDialogBox';
 import SideMenu from './components/SideMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import OrderBox from './components/order/OrderBox';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         display: 'flex',
       }}>
         <CatalogDialogBox/>
+        <OrderBox/>
         <Header/>
         <Routes>
           <Route path="/" element={<CatalogPage/>}/>

@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteCart } from "../../app/actions/cart/deleteCart";
 import { updateCart } from '../../app/actions/cart/updateCart'
 
-function CartItem(props) {
+function OrderDialogListItem(props) {
   const item = props.item
   const dispatch = useDispatch()
   
@@ -28,26 +28,25 @@ function CartItem(props) {
     <Box sx={{
       flexDirection: 'row',
       display: 'flex',
-      width: 500,
-      height: 250,
+      width: '96%',
+      height: 170,
       backgroundColor: colors.dark,
       borderRadius: 2,
-      m: 1
+      mt: "2%"
     }}>
       <Box component="img"
           sx={{
           borderRadius: 2,
-          height: 250,
-          width: 250,
+          height: 170,
+          width: 170,
         }}
         alt="Изображение"
         src={item.image}/>
 
-
       <Box sx={{
         display: 'flex',
-        width: 250,
-        height: 250,
+        width: "100%",        
+        height: 170,
         flexDirection: 'column'
       }}>
         <Typography sx={{
@@ -63,63 +62,25 @@ function CartItem(props) {
         </Typography>
 
         <Box sx={{
-          width: '100%',
-          height: 100,
+          width: '94%',
+          height: 115,
           display: 'flex',
           flexDirection: 'row',
           alignItems: "center",
-          justifyContent: 'center'
+          justifyContent: 'flex-end'
         }}>
-          <ButtonBase sx={{
-            width: 40, 
-            height: 40,
-            borderRadius: 2
-          }} onClick={() => onChangeItem(-1)}>
-            <RemoveIcon sx={{ color: colors.white }}/>
-          </ButtonBase>
           <Typography sx={{
             color: colors.white,
             fontWeight: 'bold',
-            fontSize: 20, 
-            width: 40,
+            fontSize: 20,
             textAlign: 'center',
           }}>
-            {item.amount}
+            {`${item.amount} шт.: ${item.price * item.amount} руб.`}
           </Typography>
-          <ButtonBase sx={{
-            width: 40, 
-            height: 40,
-            borderRadius: 2
-          }} onClick={() => onChangeItem(1)}>
-            <AddIcon sx={{ color: colors.white }}/>
-          </ButtonBase>
-          <ButtonBase sx={{
-            width: 40, 
-            height: 40,
-            backgroundColor: colors.red,
-            borderRadius: 2,
-            ml: 2
-          }} onClick={onDeleteItem}>
-            <DeleteIcon sx={{ color: colors.white }}/>
-          </ButtonBase>
-        </Box>
-
-        <Box sx={{
-          width: '100%',
-          height: 90,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-          <Typography sx={{
-            color: colors.white,
-            fontSize: 20
-          }}>
-            {`Цена: ${item.price * item.amount} руб.`}
-          </Typography>
+          
         </Box>
       </Box>    
     </Box>)
 }
 
-export default CartItem
+export default OrderDialogListItem
