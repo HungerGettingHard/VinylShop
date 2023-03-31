@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setProfile } from '../features/sideMenuSlice'
+import ProfileBox from "../components/profile/ProfileBox";
 
 function ProfilePage() {
   const dispatch = useDispatch()
@@ -15,9 +16,10 @@ function ProfilePage() {
       display: 'flex',
       alignItems: 'center',
       pt: '120px',
-      flexDirection: 'row',
+      flexDirection: 'column',
       width: '100%'
     }}>
+      <ProfileBox/>
     </Box>
   );
 }

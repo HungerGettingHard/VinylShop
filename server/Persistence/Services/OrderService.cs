@@ -28,15 +28,18 @@ namespace Persistence.Services
             return _orderRepository.GetList()
                 .Include(order => order.Person)
                 .Include(order => order.OrderItems)
+                .Include(order => order.Products)
                 .Select(order => new OrderResponseDto
             {
                 Id = order.Id,
                 PersonId = order.Person.Id,
                 OrderItems = order.OrderItems.Select(item => new OrderItemResponseDto
                 {
-                    Amount = item.Amount,
                     Id = item.Id,
-                    ProductId = item.ProductId
+                    Amount = item.Amount,
+                    ProductName = item.Product.Name,
+                    ImageLink = item.Product.ImageLink,
+                    Price = item.Product.Price,
                 }).ToList()
             }).ToList();
         }

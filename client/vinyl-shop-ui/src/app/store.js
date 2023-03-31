@@ -5,6 +5,7 @@ import catalogDialogReducer from '../features/catalog/catalogDialogSlice'
 import menuReducer from '../features/sideMenuSlice'
 import cartReducer from '../features/cart/cartSlice'
 import orderDialogReducer from '../features/order/orderDialogSlice'
+import orderReducer from '../features/order/orderSlice'
 
 export default configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export default configureStore({
     catalogDialog: catalogDialogReducer,
     menu: menuReducer,
     cart: cartReducer,
-    orderDialog: orderDialogReducer
+    orderDialog: orderDialogReducer,
+    order: orderReducer
   },
 })

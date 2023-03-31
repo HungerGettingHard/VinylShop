@@ -9,8 +9,9 @@
     public class OrderItemResponseDto
     {
         public Guid Id { get; set; }
-        public Guid ProductId { get; set; }
         public int Amount { get; set; }
+        public string ProductName { get; set; }
+        public string ImageLink { get; set; }
+        public decimal Price { get; set; }
     }
-
 }
