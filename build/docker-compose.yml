@@ -35,6 +35,18 @@ services:
     expose:
       - "5000"
 
+  client:
+    stdin_open: true
+    container_name: client
+    build:
+      context: ../client/vinyl-shop-ui
+      dockerfile: ./Dockerfile
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3000:3000"
+    command: npm start
+
 networks:
   default:
     name: postgre-service_default
